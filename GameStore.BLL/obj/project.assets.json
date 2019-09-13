@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.DAL.Entity\\GameStore.DAL.Entity.csproj",
-      "projectName": "GameStore.DAL.Entity",
-      "projectPath": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.DAL.Entity\\GameStore.DAL.Entity.csproj",
+      "projectUniqueName": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.BLL\\GameStore.BLL.csproj",
+      "projectName": "GameStore.BLL",
+      "projectPath": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.BLL\\GameStore.BLL.csproj",
       "packagesPath": "C:\\Users\\rovol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.DAL.Entity\\obj\\",
+      "outputPath": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
