@@ -12,3 +12,6 @@ C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.PL\obj\De
 C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.PL\obj\Debug\netcoreapp2.1\GameStore.PL.RazorTargetAssemblyInfo.cache
 C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.PL\obj\Debug\netcoreapp2.1\GameStore.PL.dll
 C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.PL\obj\Debug\netcoreapp2.1\GameStore.PL.pdb
+C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.PL\bin\Debug\netcoreapp2.1\GameStore.DAL.Entity.dll
+C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.PL\bin\Debug\netcoreapp2.1\GameStore.DAL.Entity.pdb
+C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.PL\obj\Debug\netcoreapp2.1\GameStore.PL.csproj.CopyComplete
