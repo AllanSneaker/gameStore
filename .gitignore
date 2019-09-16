@@ -1,8 +1,8 @@
 .vs/GameStore
 GameStore.BLL/obj
-GameStore.BLL/bin/Debug/netstandard2.0
+GameStore.BLL/bin/
 GameStore.DAL.Entity/obj
-GameStore.DAL.Entity/bin/Debug/netstandard2.0
+GameStore.DAL.Entity/bin/
 GameStore.PL/obj
-GameStore.PL/bin/Debug/netcoreapp2.1
+GameStore.PL/bin/
 
