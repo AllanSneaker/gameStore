@@ -1,9 +1,0 @@
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.BLL\bin\Debug\netstandard2.0\GameStore.BLL.deps.json
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.BLL\bin\Debug\netstandard2.0\GameStore.BLL.dll
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.BLL\bin\Debug\netstandard2.0\GameStore.BLL.pdb
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.BLL\obj\Debug\netstandard2.0\GameStore.BLL.csprojAssemblyReference.cache
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.BLL\obj\Debug\netstandard2.0\GameStore.BLL.csproj.CoreCompileInputs.cache
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.BLL\obj\Debug\netstandard2.0\GameStore.BLL.AssemblyInfoInputs.cache
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.BLL\obj\Debug\netstandard2.0\GameStore.BLL.AssemblyInfo.cs
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.BLL\obj\Debug\netstandard2.0\GameStore.BLL.dll
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.BLL\obj\Debug\netstandard2.0\GameStore.BLL.pdb

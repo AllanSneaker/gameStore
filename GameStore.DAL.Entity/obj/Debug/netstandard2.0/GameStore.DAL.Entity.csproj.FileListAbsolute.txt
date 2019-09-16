@@ -1,9 +1,0 @@
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.DAL.Entity\bin\Debug\netstandard2.0\GameStore.DAL.Entity.deps.json
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.DAL.Entity\bin\Debug\netstandard2.0\GameStore.DAL.Entity.dll
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.DAL.Entity\obj\Debug\netstandard2.0\GameStore.DAL.Entity.csprojAssemblyReference.cache
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.DAL.Entity\obj\Debug\netstandard2.0\GameStore.DAL.Entity.csproj.CoreCompileInputs.cache
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.DAL.Entity\obj\Debug\netstandard2.0\GameStore.DAL.Entity.AssemblyInfoInputs.cache
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.DAL.Entity\obj\Debug\netstandard2.0\GameStore.DAL.Entity.AssemblyInfo.cs
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.DAL.Entity\bin\Debug\netstandard2.0\GameStore.DAL.Entity.pdb
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.DAL.Entity\obj\Debug\netstandard2.0\GameStore.DAL.Entity.dll
-C:\Users\rovol\source\repos\AllanSneaker\gameStore\GameStore\GameStore.DAL.Entity\obj\Debug\netstandard2.0\GameStore.DAL.Entity.pdb
