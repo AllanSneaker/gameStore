@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.PL\\GameStore.PL.csproj": {}
+    "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\GameStore\\GameStore\\GameStore.PL\\GameStore.PL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.PL\\GameStore.PL.csproj": {
+    "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\GameStore\\GameStore\\GameStore.PL\\GameStore.PL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.PL\\GameStore.PL.csproj",
+        "projectUniqueName": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\GameStore\\GameStore\\GameStore.PL\\GameStore.PL.csproj",
         "projectName": "GameStore.PL",
-        "projectPath": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.PL\\GameStore.PL.csproj",
+        "projectPath": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\GameStore\\GameStore\\GameStore.PL\\GameStore.PL.csproj",
         "packagesPath": "C:\\Users\\rovol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\gameStore\\GameStore\\GameStore.PL\\obj\\",
+        "outputPath": "C:\\Users\\rovol\\source\\repos\\AllanSneaker\\GameStore\\GameStore\\GameStore.PL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
