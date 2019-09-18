@@ -10,14 +10,15 @@ namespace GameStore.DAL.Entity.Context
 	{
 		public DbSet<Game> Games { get; set; }
 
-		public GameStoreContext()
-		{
-			Database.EnsureCreated();
-		}
+        public GameStoreContext(DbContextOptions<GameStoreContext> options) : base(options)
+        {
+            Database.EnsureCreated();
+        }
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=GameStoreDB;Trusted_Connection=True;");
-		}
+
+  //      protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		//{
+		//	optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=GameStoreDB;Trusted_Connection=True;");
+		//}
 	}
 }
