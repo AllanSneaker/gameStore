@@ -14,11 +14,20 @@ namespace GameStore.PL
 	{
 		public static void Main(string[] args)
 		{
-			CreateWebHostBuilder(args).Build().Run();
-		}
+            BuildWebHost(args).Run();
+            //CreateWebHostBuilder(args).Build().Run();
+        }
 
-		public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-			WebHost.CreateDefaultBuilder(args)
-				.UseStartup<Startup>();
-	}
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((context, builder) => builder.SetBasePath(context.HostingEnvironment.ContentRootPath)
+                    .AddJsonFile("appsetting.json")
+                    .Build())
+
+                .UseStartup<Startup>()
+                .Build();
+        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        //	WebHost.CreateDefaultBuilder(args)
+        //		.UseStartup<Startup>();
+    }
 }
