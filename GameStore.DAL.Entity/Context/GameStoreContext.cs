@@ -12,7 +12,7 @@ namespace GameStore.DAL.Entity.Context
 
         public GameStoreContext(DbContextOptions<GameStoreContext> options) : base(options)
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
