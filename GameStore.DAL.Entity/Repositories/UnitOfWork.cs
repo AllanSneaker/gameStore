@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using GameStore.DAL.Entity.Context;
 using GameStore.DAL.Entity.Interfaces;
-using GameStore.DAL.Entity.Models;
 
 namespace GameStore.DAL.Entity.Repositories
 {
@@ -28,16 +25,16 @@ namespace GameStore.DAL.Entity.Repositories
             await _context.SaveChangesAsync();
         }
 
-        private bool disposed = false;
+        private bool _disposed = false;
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!this._disposed)
             {
                 if (disposing)
                 {
                     _context.Dispose();
                 }
-                this.disposed = true;
+                this._disposed = true;
             }
         }
 

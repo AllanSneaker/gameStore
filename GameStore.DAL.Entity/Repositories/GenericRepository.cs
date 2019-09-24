@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using GameStore.DAL.Entity.Context;
 using GameStore.DAL.Entity.Interfaces;
@@ -11,7 +8,7 @@ namespace GameStore.DAL.Entity.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        internal GameStoreContext _context;
+        private readonly GameStoreContext _context;
 
         public GenericRepository(GameStoreContext context)
         {
@@ -28,31 +25,28 @@ namespace GameStore.DAL.Entity.Repositories
             return await _context.Set<TEntity>().ToListAsync();
         }
 
-        public virtual async Task<TEntity> CreateAsync(TEntity entity)
+        public virtual TEntity Create(TEntity entity)
         {
             _context.Set<TEntity>().Add(entity);
-            await _context.SaveChangesAsync();
             return entity;
         }
 
-        public virtual async Task<TEntity> UpdateAsync(TEntity entity, object key)
+        public virtual TEntity Update(TEntity entity, object key)
         {
             if (entity == null)
                 return null;
-            TEntity exist = await _context.Set<TEntity>().FindAsync(key);
+            TEntity exist =  _context.Set<TEntity>().Find(key);
             if (exist != null)
             {
                 _context.Entry(exist).CurrentValues.SetValues(entity);
-                await _context.SaveChangesAsync();
             }
 
             return exist;
         }
 
-        public virtual async Task<int> DeleteAsync(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             _context.Set<TEntity>().Remove(entity);
-            return await _context.SaveChangesAsync();
         }
     }
 }

@@ -9,8 +9,8 @@ namespace GameStore.DAL.Entity.Interfaces
     {
         Task<TEntity> GetAsync(int id);
         Task<IEnumerable<TEntity>> GetAllAsync();
-        Task<TEntity> CreateAsync(TEntity entity);
-        Task<TEntity> UpdateAsync(TEntity entity, object key);
-        Task<int> DeleteAsync(TEntity entity);
+        TEntity Create(TEntity entity);
+        TEntity Update(TEntity entity, object key);
+        void Delete(TEntity entity);
     }
 }
