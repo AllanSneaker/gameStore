@@ -1,6 +1,8 @@
 ﻿using GameStore.BLL.Configurations;
 using GameStore.DAL.Entity.Context;
+using GameStore.DAL.Entity.Interfaces;
 using GameStore.DAL.Entity.Models;
+using GameStore.DAL.Entity.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,6 +27,8 @@ namespace GameStore.PL
                 options.UseSqlServer(Configuration.GetConnectionString("GameStoreConnection")));
 
             AutoMapperConfig.Map(services);
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
         }
 
