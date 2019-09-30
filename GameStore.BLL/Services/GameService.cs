@@ -12,7 +12,7 @@ namespace GameStore.BLL.Services
     public class GameService : IGameService
     {
         private readonly IMapper _autoMapper;
-        IUnitOfWork Database { get; }
+        private IUnitOfWork Database { get; }
 
         public GameService(IMapper autoMapper, IUnitOfWork database)
         {
@@ -20,17 +20,17 @@ namespace GameStore.BLL.Services
             Database = database;
         }
 
-        public async Task<IEnumerable<GameDto>> GetAllGames()
+        public async Task<IEnumerable<GameDto>> GetAllGamesAsync()
         {
             return _autoMapper.Map<IEnumerable<GameDto>>(await Database.GameRepository.GetAllAsync());
         }
 
-        public async Task<GameDto> Get(int id)
+        public async Task<GameDto> GetAsync(int id)
         {
             return _autoMapper.Map<GameDto>(await Database.GameRepository.GetAsync(id));
         }
 
-        public async Task<GameDto> Create(GameDto entity)
+        public async Task<GameDto> CreateAsync(GameDto entity)
         {
             if (entity == null)
                 throw new ArgumentNullException();
@@ -42,12 +42,12 @@ namespace GameStore.BLL.Services
             return entity;
         }
 
-        public Task Update(GameDto entity)
+        public Task UpdateAsync(GameDto entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task Delete(int id)
+        public Task DeleteAsync(int id)
         {
             throw new System.NotImplementedException();
         }

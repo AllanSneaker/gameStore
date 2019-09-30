@@ -7,7 +7,6 @@ namespace GameStore.DAL.Entity.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IGameRepository GameRepository { get; }
-        //IGenericRepository<Game> GameRepository { get; }
         Task SaveAsync();
     }
 }

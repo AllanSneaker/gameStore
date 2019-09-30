@@ -19,11 +19,9 @@ namespace GameStore.PL
     public class Startup
     {
         public IConfiguration Configuration { get; set; }
-       // private IGameService _gameService;
-        public Startup(IConfiguration config/*, IGameService gameService*/)
+        public Startup(IConfiguration config)
         {
             Configuration = config;
-           // _gameService = gameService;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -49,33 +47,6 @@ namespace GameStore.PL
             }
 
             app.UseMvc();
-            //app.Run(async (context) =>
-            //{
-            //   var list =  _gameService.GetAllGames();
-            //   await list;
-            //    //var optionsBuilder = new DbContextOptionsBuilder<GameStoreContext>();
-
-            //    //var options = optionsBuilder
-            //    //    .UseSqlServer(@"Server = (localdb)\mssqllocaldb; Database = GameStoreDB; Trusted_Connection = True; ")
-            //    //    .UseLazyLoadingProxies()
-            //    //    .Options;
-
-            //    //GameStoreContext db = new GameStoreContext(options);
-
-            //    //var game = new Game() {Name = "fdsfsd"};
-            //    //db.Games.Add(game);
-            //    //db.SaveChanges();
-
-            //    //var list = db.Games;
-            //    //foreach (var l in list)
-            //    //{
-            //    //    await context.Response.WriteAsync(l.Name);
-            //    //    //await context.Response.WriteAsync(l.Description);
-            //    //}
-
-
-            //    //await context.Response.WriteAsync("Hello World!");
-            //});
         }
     }
 }

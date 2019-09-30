@@ -14,9 +14,7 @@ namespace GameStore.DAL.Entity.Repositories
         {
             _context = context;
         }
-
-        //public IGenericRepository<Game> GameRepository =>
-        //    _gameRepository ?? (_gameRepository = new GameRepository(_context));
+        
         public IGameRepository GameRepository =>
             _gameRepository ?? (_gameRepository = new GameRepository(_context));
 
@@ -25,16 +23,16 @@ namespace GameStore.DAL.Entity.Repositories
             await _context.SaveChangesAsync();
         }
 
-        private bool _disposed = false;
+        private bool _disposed;
         protected virtual void Dispose(bool disposing)
         {
-            if (!this._disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
                     _context.Dispose();
                 }
-                this._disposed = true;
+                _disposed = true;
             }
         }
 
