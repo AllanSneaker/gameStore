@@ -79,7 +79,7 @@ namespace GameStore.DAL.Entity.Context
                     Name = "Pro Evolution Soccer 2020",
                     Views = 5,
                     Description = "Simulator of most popular sport at now day",
-                    
+
                 }
             );
 

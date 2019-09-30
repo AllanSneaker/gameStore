@@ -4,14 +4,16 @@ using GameStore.DAL.Entity.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GameStore.DAL.Entity.Migrations
 {
     [DbContext(typeof(GameStoreContext))]
-    partial class GameStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20190926114947_GameMigration")]
+    partial class GameMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,27 +31,21 @@ namespace GameStore.DAL.Entity.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.Property<decimal>("Price");
 
                     b.Property<DateTime>("PublicationDate");
 
-                    b.Property<uint>("Views");
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<DateTime>("PublicationDate");
-
+                    b.Property<int>("Views");
 
                     b.HasKey("Id");
 
                     b.ToTable("Games");
 
                     b.HasData(
-                        new { Id = 1, CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Street racing with interesting plot", Name = "Need for Speed: Most Wanted", Price = 123m, PublicationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Views = 5L },
-                        new { Id = 2, CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Simulator of most popular sport at now day", Name = "Pro Evolution Soccer 2020", Price = 0m, PublicationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Views = 5L }
+                        new { Id = 1, CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Street racing with interesting plot", Name = "Need for Speed: Most Wanted", Price = 123m, PublicationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Views = 5 },
+                        new { Id = 2, CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Simulator of most popular sport at now day", Name = "Pro Evolution Soccer 2020", Price = 0m, PublicationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Views = 5 }
                     );
                 });
 
