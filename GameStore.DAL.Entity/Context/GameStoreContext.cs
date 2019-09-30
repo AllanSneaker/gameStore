@@ -79,28 +79,7 @@ namespace GameStore.DAL.Entity.Context
                     Name = "Pro Evolution Soccer 2020",
                     Views = 5,
                     Description = "Simulator of most popular sport at now day",
-                    //PlatformTypeGames = new List<PlatformTypeGame>()
-                    //{
-                    //    new PlatformTypeGame()
-                    //    {
-                    //       PlatformType = plt1
-                    //    },
-                    //    new PlatformTypeGame()
-                    //    {
-                    //        PlatformType = plt2
-                    //    }
-                    //},
-                    //GenreGames = new List<GenreGame>()
-                    //{
-                    //    new GenreGame()
-                    //    {
-                    //        Genre = g1
-                    //    },
-                    //    new GenreGame()
-                    //    {
-                    //        Genre = g2
-                    //    }
-                    //}
+                    
                 }
             );
 
