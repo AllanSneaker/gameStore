@@ -29,23 +29,22 @@ namespace GameStore.DAL.Entity.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Name");
-
-                    b.Property<long>("Views");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<decimal>("Price");
 
                     b.Property<DateTime>("PublicationDate");
 
+                    b.Property<long>("Views");
 
                     b.HasKey("Id");
 
                     b.ToTable("Games");
 
                     b.HasData(
-
-                        new { Id = 1, CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Street racing with interesting plot", Name = "Need for Speed: Most Wanted", Price = 123m, PublicationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Views = 5 },
-                        new { Id = 2, CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Simulator of most popular sport at now day", Name = "Pro Evolution Soccer 2020", Price = 0m, PublicationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Views = 5 }
+                        new { Id = 1, CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Street racing with interesting plot", Name = "Need for Speed: Most Wanted", Price = 123m, PublicationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Views = 5L },
+                        new { Id = 2, CreationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Description = "Simulator of most popular sport at now day", Name = "Pro Evolution Soccer 2020", Price = 0m, PublicationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Views = 5L }
                     );
                 });
 
