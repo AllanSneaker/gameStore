@@ -4,14 +4,16 @@ using GameStore.DAL.Entity.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GameStore.DAL.Entity.Migrations
 {
     [DbContext(typeof(GameStoreContext))]
-    partial class GameStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20190930122335_Initialize")]
+    partial class Initialize
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,12 +38,7 @@ namespace GameStore.DAL.Entity.Migrations
 
                     b.Property<DateTime>("PublicationDate");
 
-                    b.Property<uint>("Views");
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<DateTime>("PublicationDate");
-
+                    b.Property<long>("Views");
 
                     b.HasKey("Id");
 
