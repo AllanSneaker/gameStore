@@ -36,7 +36,7 @@ namespace GameStore.DAL.Entity.Migrations
 
                     b.Property<DateTime>("PublicationDate");
 
-                    b.Property<long>("Views");
+                    b.Property<uint>("Views");
 
                     b.HasKey("Id");
 
