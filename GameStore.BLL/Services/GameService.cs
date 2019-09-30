@@ -6,6 +6,7 @@ using GameStore.BLL.DTO;
 using GameStore.BLL.Interfaces;
 using GameStore.DAL.Entity.Interfaces;
 using GameStore.DAL.Entity.Models;
+using GameStore.DAL.Entity.Models.Game;
 
 namespace GameStore.BLL.Services
 {
