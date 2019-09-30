@@ -23,21 +23,21 @@ namespace GameStore.PL.Controller
         [Route("api/games")]
         public async Task<IActionResult> GetAllGames()
         {
-            return Ok(await _gameService.GetAllGames());
+            return Ok(await _gameService.GetAllGamesAsync());
         }
 
         [HttpGet]
         [Route("api/game/{id}")]
         public async Task<IActionResult> GetGame(int id)
         {
-            return Ok(await _gameService.Get(id));
+            return Ok(await _gameService.GetAsync(id));
         }
 
         [HttpPost]
         [Route("api/game")]
         public async Task<IActionResult> PostGame([FromBody]GameDto gameDto)
         {
-            return Ok(await _gameService.Create(gameDto));
+            return Ok(await _gameService.CreateAsync(gameDto));
         }
     }
 }

@@ -4,9 +4,9 @@ namespace GameStore.BLL.Interfaces
 {
     public interface IService<T> where T : class
     {
-        Task<T> Get(int id);
-        Task<T> Create(T entity);
-        Task Update(T entity);
-        Task Delete(int id);
+        Task<T> GetAsync(int id);
+        Task<T> CreateAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task DeleteAsync(int id);
     }
 }
