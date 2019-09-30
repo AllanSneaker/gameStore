@@ -4,6 +4,7 @@ using System.Text;
 using AutoMapper;
 using GameStore.BLL.DTO;
 using GameStore.DAL.Entity.Models;
+using GameStore.DAL.Entity.Models.Game;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GameStore.BLL.Configurations
