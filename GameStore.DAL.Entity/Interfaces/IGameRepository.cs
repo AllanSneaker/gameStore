@@ -3,7 +3,7 @@ using GameStore.DAL.Entity.Models.Game;
 
 namespace GameStore.DAL.Entity.Interfaces
 {
-    public interface IGameRepository : IGenericRepository<Game>
+    public interface IGameRepository : IGenericRepository<Game, int>
     {
     }
 }
