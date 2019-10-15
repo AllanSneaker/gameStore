@@ -1,6 +1,8 @@
 .vs/
 GameStore.BLL/obj
 GameStore.BLL/bin/
+GameStore.BLL.Tests/obj
+GameStore.BLL.Tests/bin/
 GameStore.DAL.Entity/obj
 GameStore.DAL.Entity/bin/
 GameStore.PL/obj
