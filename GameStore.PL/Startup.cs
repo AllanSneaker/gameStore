@@ -6,6 +6,7 @@ using GameStore.DAL.Entity.Context;
 using GameStore.DAL.Entity.Interfaces;
 using GameStore.DAL.Entity.Models;
 using GameStore.DAL.Entity.Repositories;
+using GameStore.PL.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -46,6 +47,7 @@ namespace GameStore.PL
                 app.UseDeveloperExceptionPage();
             }
 
+            app.ConfigureExceptionHandler();
             app.UseMvc();
         }
     }
