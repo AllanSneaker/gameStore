@@ -1,7 +1,9 @@
-﻿using GameStore.PL.Models;
+﻿using Castle.Core.Logging;
+using GameStore.PL.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,8 @@ namespace GameStore.PL.Configurations
                     var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                     if (contextFeature != null)
                     {
+                        Log.Error($"Something went wrong: {contextFeature.Error}");
+
                         await context.Response.WriteAsync(new ErrorDetails()
                         {
                             StatusCode = context.Response.StatusCode,

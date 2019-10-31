@@ -7,4 +7,4 @@ GameStore.DAL.Entity/obj
 GameStore.DAL.Entity/bin/
 GameStore.PL/obj/
 GameStore.PL/bin/
-
+GameStore.PL/Logs/
