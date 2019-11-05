@@ -14,6 +14,7 @@ namespace GameStore.DAL.Entity.Context
         public DbSet<GenreGame> GenreGames { get; set; }
         public DbSet<PlatformType> PlatformTypes { get; set; }
         public DbSet<PlatformTypeGame> PlatformTypeGames { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         public GameStoreContext(DbContextOptions<GameStoreContext> options) : base(options)
         {

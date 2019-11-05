@@ -16,11 +16,13 @@ namespace GameStore.DAL.Entity.Models.Game
         public DateTime PublicationDate { get; set; }
         public virtual ICollection<GenreGame> GenreGames { get; set; }
         public virtual ICollection<PlatformTypeGame> PlatformTypeGames { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
         public Game()
         {
             GenreGames = new List<GenreGame>();
             PlatformTypeGames = new List<PlatformTypeGame>();
+            Comments = new List<Comment>();
         }
     }
 }
