@@ -2,6 +2,7 @@
 using GameStore.BLL.DTO;
 using GameStore.BLL.Interfaces;
 using GameStore.DAL.Entity.Interfaces;
+using GameStore.DAL.Entity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,9 +19,18 @@ namespace GameStore.BLL.Services
             _autoMapper = mapper;
             Database = unitOfWork;
         }
-        public Task AddComment(int gameId, CommentDto entity)
+        public async Task AddComment(int gameId, CommentDto entity)
         {
-            throw new NotImplementedException();
+            //if (entity == null)
+            //    throw new ArgumentNullException();
+
+            var game = Database.GameRepository.GetAsync(gameId);
+            var comment = _autoMapper.Map<Comment>(entity);
+
+            //comment.Game = game ?? throw new ItemNotFoundException();
+
+            Database.CommentRepository.Create(comment);
+            await Database.SaveAsync();
         }
 
         public async Task<IEnumerable<CommentDto>> GetAllComments(int gameId)
@@ -29,7 +39,7 @@ namespace GameStore.BLL.Services
             //if (game == null)
             //    throw new ItemNotFoundException();
 
-            return _autoMapper.Map<IEnumerable<CommentDto>>(Database.CommentRepository.Find(x => x.Game.Id == game.Id));
+            return _autoMapper.Map<IEnumerable<CommentDto>>(Database.CommentRepository.FindAsync(x => x.Game.Id == game.Id));
         }
 
         public Task Reply(int commentId, CommentDto entity)

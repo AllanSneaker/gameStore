@@ -14,6 +14,7 @@ namespace GameStore.BLL.Configurations
         public AutoMapperConfig()
         {
             CreateMap<Game, GameDto>().ReverseMap();
+            CreateMap<Comment, CommentDto>().ReverseMap();
         }
 
         public static void Map(IServiceCollection services)
