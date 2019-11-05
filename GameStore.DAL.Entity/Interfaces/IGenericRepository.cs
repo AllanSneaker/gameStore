@@ -12,5 +12,6 @@ namespace GameStore.DAL.Entity.Interfaces
         TEntity Create(TEntity entity);
         TEntity Update(TEntity entity, object key);
         void Delete(TEntity entity);
+        IEnumerable<TEntity> Find(Func<TEntity, Boolean> predicate);
     }
 }
