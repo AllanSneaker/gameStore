@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using GameStore.DAL.Entity.Context;
 using GameStore.DAL.Entity.Interfaces;
@@ -51,9 +52,9 @@ namespace GameStore.DAL.Entity.Repositories
             _context.Set<TEntity>().Remove(entity);
         }
 
-        public IEnumerable<TEntity> Find(Func<TEntity, Boolean> predicate)
+        public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, Boolean>> predicate)
         {
-            return _context.Set<TEntity>().Where(predicate);
+            return await _context.Set<TEntity>().Where(predicate).ToListAsync();
         }
     }
 }
