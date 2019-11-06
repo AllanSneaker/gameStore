@@ -9,7 +9,7 @@ using GameStore.DAL.Entity.Models.Game;
 
 namespace GameStore.DAL.Entity.Repositories
 {
-    public class GameRepository : GenericRepository<Game>, IGameRepository
+    public class GameRepository : GenericRepository<Game, int>, IGameRepository
     {
         public GameRepository(GameStoreContext context) : base(context)
         {

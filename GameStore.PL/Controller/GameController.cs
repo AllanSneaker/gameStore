@@ -39,5 +39,21 @@ namespace GameStore.PL.Controller
         {
             return Ok(await _gameService.CreateAsync(gameDto));
         }
+
+        [HttpPut]
+        [Route("api/game")]
+        public async Task<IActionResult> PutGame([FromBody]GameDto gameDto)
+        {
+            await _gameService.UpdateAsync(gameDto);
+            return Ok("Game updated");
+        }
+
+        [HttpDelete]
+        [Route("api/game/{id}")]
+        public async Task<IActionResult> DeleteGame(int id)
+        {
+            await _gameService.DeleteAsync(id);
+            return Ok("Game deleted");
+        }
     }
 }

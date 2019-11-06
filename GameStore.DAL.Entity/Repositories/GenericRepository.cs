@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.DAL.Entity.Repositories
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity, TKey> : IGenericRepository<TEntity, TKey> where TEntity : class
     {
         private readonly GameStoreContext _context;
 
@@ -18,7 +18,7 @@ namespace GameStore.DAL.Entity.Repositories
             _context = context;
         }
 
-        public virtual async Task<TEntity> GetAsync(int id)
+        public virtual async Task<TEntity> GetAsync(TKey id)
         {
             return await _context.Set<TEntity>().FindAsync(id);
         }
@@ -34,17 +34,13 @@ namespace GameStore.DAL.Entity.Repositories
             return entity;
         }
 
-        public virtual TEntity Update(TEntity entity, object key)
+        public virtual TEntity Update(TEntity entity)
         {
             if (entity == null)
                 return null;
-            TEntity exist =  _context.Set<TEntity>().Find(key);
-            if (exist != null)
-            {
-                _context.Entry(exist).CurrentValues.SetValues(entity);
-            }
 
-            return exist;
+            _context.Entry(entity).State = EntityState.Modified;
+            return entity;
         }
 
         public virtual void Delete(TEntity entity)

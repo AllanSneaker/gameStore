@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using GameStore.BLL.DTO;
+using GameStore.BLL.Exceptions;
 using GameStore.BLL.Interfaces;
 using GameStore.DAL.Entity.Interfaces;
 using GameStore.DAL.Entity.Models;
@@ -43,14 +44,35 @@ namespace GameStore.BLL.Services
             return entity;
         }
 
-        public Task UpdateAsync(GameDto entity)
+        public async Task UpdateAsync(GameDto entity)
         {
-            throw new System.NotImplementedException();
+            if (entity == null)
+                throw new ArgumentNullException();
+
+            var game = await Database.GameRepository.GetAsync(entity.Id);
+
+            if (game == null)
+                throw new ItemNotFoundException("Game not found");
+
+            game.Name = entity.Name;
+            game.Price = entity.Price;
+            game.Views = entity.Views;
+            
+
+            Database.GameRepository.Update(game);
+            await Database.SaveAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var game = await Database.GameRepository.GetAsync(id);
+
+            if (game == null)
+                throw new ItemNotFoundException("The item not found");
+
+            Database.GameRepository.Delete(game);
+
+            await Database.SaveAsync();
         }
     }
 }
