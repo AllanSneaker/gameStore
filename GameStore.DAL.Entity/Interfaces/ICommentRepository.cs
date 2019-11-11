@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameStore.DAL.Entity.Interfaces
 {
-    public interface ICommentRepository : IGenericRepository<Comment>
+    public interface ICommentRepository : IGenericRepository<Comment, int>
     { 
     }
 }

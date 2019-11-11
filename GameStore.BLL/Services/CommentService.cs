@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GameStore.BLL.DTO;
+using GameStore.BLL.Exceptions;
 using GameStore.BLL.Interfaces;
 using GameStore.DAL.Entity.Interfaces;
 using GameStore.DAL.Entity.Models;
@@ -21,13 +22,13 @@ namespace GameStore.BLL.Services
         }
         public async Task AddComment(int gameId, CommentDto entity)
         {
-            //if (entity == null)
-            //    throw new ArgumentNullException();
+            if (entity == null)
+                throw new ArgumentNullException();
 
-            var game = Database.GameRepository.GetAsync(gameId);
+            var game = await Database.GameRepository.GetAsync(gameId);
             var comment = _autoMapper.Map<Comment>(entity);
 
-            //comment.Game = game ?? throw new ItemNotFoundException();
+            comment.Game = (game ?? throw new ItemNotFoundException());
 
             Database.CommentRepository.Create(comment);
             await Database.SaveAsync();
@@ -35,11 +36,12 @@ namespace GameStore.BLL.Services
 
         public async Task<IEnumerable<CommentDto>> GetAllComments(int gameId)
         {
-            var game = Database.GameRepository.GetAsync(gameId);
+            //var game = await Database.GameRepository.GetAsync(gameId);
             //if (game == null)
             //    throw new ItemNotFoundException();
 
-            return _autoMapper.Map<IEnumerable<CommentDto>>(Database.CommentRepository.FindAsync(x => x.Game.Id == game.Id));
+            //return _autoMapper.Map<IEnumerable<CommentDto>>(await Database.CommentRepository.FindAsync(x => x.Game.Id == game.Id));
+            return _autoMapper.Map<IEnumerable<CommentDto>>(await Database.CommentRepository.GetAsync(gameId));
         }
 
         public Task Reply(int commentId, CommentDto entity)

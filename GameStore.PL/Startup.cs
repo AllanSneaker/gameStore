@@ -32,10 +32,12 @@ namespace GameStore.PL
             services.AddDbContext<GameStoreContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("GameStoreConnection")));
 
-            AutoMapperConfig.Map(services);
+            GameStore.BLL.Configurations.AutoMapperConfig.Map(services);
+            //GameStore.PL.Configurations.AutoMapperConfig.Map(services);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IGameService, GameService>();
+            services.AddScoped<ICommentService, CommentService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
