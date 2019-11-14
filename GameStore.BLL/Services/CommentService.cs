@@ -6,7 +6,6 @@ using GameStore.DAL.Entity.Interfaces;
 using GameStore.DAL.Entity.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GameStore.BLL.Services
@@ -36,17 +35,11 @@ namespace GameStore.BLL.Services
 
         public async Task<IEnumerable<CommentDto>> GetAllComments(int gameId)
         {
-            //var game = await Database.GameRepository.GetAsync(gameId);
-            //if (game == null)
-            //    throw new ItemNotFoundException();
+            var game = await Database.GameRepository.GetAsync(gameId);
+            if (game == null)
+                throw new ItemNotFoundException();
 
-            //return _autoMapper.Map<IEnumerable<CommentDto>>(await Database.CommentRepository.FindAsync(x => x.Game.Id == game.Id));
-            return _autoMapper.Map<IEnumerable<CommentDto>>(await Database.CommentRepository.GetAsync(gameId));
-        }
-
-        public Task Reply(int commentId, CommentDto entity)
-        {
-            throw new NotImplementedException();
+            return _autoMapper.Map<IEnumerable<CommentDto>>(await Database.CommentRepository.FindAsync(x => x.Game.Id == game.Id));
         }
     }
 }

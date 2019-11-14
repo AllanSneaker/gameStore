@@ -4,27 +4,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GameStore.DAL.Entity.Migrations
 {
-    public partial class GameMigration : Migration
+    public partial class Initialize : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<DateTime>(
-                name: "CreationDate",
-                table: "Games",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
-
-            migrationBuilder.AddColumn<decimal>(
-                name: "Price",
-                table: "Games",
-                nullable: false,
-                defaultValue: 0m);
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "PublicationDate",
-                table: "Games",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+            migrationBuilder.CreateTable(
+                name: "Games",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Views = table.Column<long>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
+                    CreationDate = table.Column<DateTime>(nullable: false),
+                    PublicationDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Games", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Genres",
@@ -57,6 +57,36 @@ namespace GameStore.DAL.Entity.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PlatformTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Content = table.Column<string>(nullable: true),
+                    GameId = table.Column<int>(nullable: true),
+                    ParentId = table.Column<int>(nullable: true),
+                    Publisher = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comments_Comments_ParentId",
+                        column: x => x.ParentId,
+                        principalTable: "Comments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,12 +137,35 @@ namespace GameStore.DAL.Entity.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Games",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "Price",
-                value: 123m);
+                columns: new[] { "Id", "CreationDate", "Description", "Name", "Price", "PublicationDate", "Views" },
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Street racing with interesting plot", "Need for Speed: Most Wanted", 123m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5L });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "Id", "CreationDate", "Description", "Name", "Price", "PublicationDate", "Views" },
+                values: new object[] { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Simulator of most popular sport at now day", "Pro Evolution Soccer 2020", 0m, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5L });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "Content", "Created", "GameId", "Name", "ParentId", "Publisher" },
+                values: new object[] { 1, "comment", new DateTime(2019, 11, 14, 0, 0, 0, 0, DateTimeKind.Local), 1, null, null, "nickname" });
+
+            migrationBuilder.InsertData(
+                table: "Comments",
+                columns: new[] { "Id", "Content", "Created", "GameId", "Name", "ParentId", "Publisher" },
+                values: new object[] { 2, "comment2", new DateTime(2019, 11, 14, 0, 0, 0, 0, DateTimeKind.Local), 1, null, null, "nickname" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_GameId",
+                table: "Comments",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_ParentId",
+                table: "Comments",
+                column: "ParentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GenreGames_GenreId",
@@ -133,6 +186,9 @@ namespace GameStore.DAL.Entity.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Comments");
+
+            migrationBuilder.DropTable(
                 name: "GenreGames");
 
             migrationBuilder.DropTable(
@@ -142,19 +198,10 @@ namespace GameStore.DAL.Entity.Migrations
                 name: "Genres");
 
             migrationBuilder.DropTable(
+                name: "Games");
+
+            migrationBuilder.DropTable(
                 name: "PlatformTypes");
-
-            migrationBuilder.DropColumn(
-                name: "CreationDate",
-                table: "Games");
-
-            migrationBuilder.DropColumn(
-                name: "Price",
-                table: "Games");
-
-            migrationBuilder.DropColumn(
-                name: "PublicationDate",
-                table: "Games");
         }
     }
 }

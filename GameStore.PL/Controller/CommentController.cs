@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using GameStore.BLL.DTO;
 using GameStore.BLL.Interfaces;
 using GameStore.PL.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameStore.PL.Controller
@@ -23,26 +20,20 @@ namespace GameStore.PL.Controller
         }
 
         [HttpGet]
-        //[Route("api/games/{id}/comments")]
-        [Route("api/comments/{id}")]
-        public async Task<IActionResult> GetComments(int gameId)
+        [Route("api/games/{gameId}/comments")]
+        public async Task<IEnumerable<CommentModel>> GetComments(int gameId)
         {
-            //var comments = _autoMapper.Map<IEnumerable<CommentDto>, IEnumerable<CommentModel>>(await _commentService.GetAllComments(id));
-            //return comments;
-
-            return Ok(await _commentService.GetAllComments(gameId));
-
+            var comments = _autoMapper.Map<IEnumerable <CommentModel>>(await _commentService.GetAllComments(gameId));
+            return comments;
         }
 
         [HttpPost]
         [Route("api/games/{gameId}/comments")]
-        public async Task<IActionResult> AddComment(int gameId, [FromBody]CommentDto commentDto)
+        public async Task<IActionResult> AddComment(int gameId, [FromBody]AddCommentModel model)
         {
-            //var comment = _commentService.AddComment(gameId, commentDto);
-            //return Ok("Comment added");
-            await _commentService.AddComment(gameId, commentDto);
+            var comment = _autoMapper.Map<AddCommentModel, CommentDto>(model);
+            await _commentService.AddComment(gameId, comment);
             return Ok("Comment added");
         }
-
     }
 }

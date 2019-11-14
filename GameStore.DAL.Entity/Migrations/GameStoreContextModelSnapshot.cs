@@ -27,11 +27,15 @@ namespace GameStore.DAL.Entity.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<DateTime>("Created");
+
                     b.Property<int?>("GameId");
+
+                    b.Property<string>("Name");
 
                     b.Property<int?>("ParentId");
 
-                    b.Property<string>("PublisherName");
+                    b.Property<string>("Publisher");
 
                     b.HasKey("Id");
 
@@ -40,6 +44,11 @@ namespace GameStore.DAL.Entity.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new { Id = 1, Content = "comment", Created = new DateTime(2019, 11, 14, 0, 0, 0, 0, DateTimeKind.Local), GameId = 1, Publisher = "nickname" },
+                        new { Id = 2, Content = "comment2", Created = new DateTime(2019, 11, 14, 0, 0, 0, 0, DateTimeKind.Local), GameId = 1, Publisher = "nickname" }
+                    );
                 });
 
             modelBuilder.Entity("GameStore.DAL.Entity.Models.Game.Game", b =>

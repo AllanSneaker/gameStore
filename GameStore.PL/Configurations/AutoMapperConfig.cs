@@ -1,30 +1,19 @@
 ﻿using AutoMapper;
 using GameStore.BLL.DTO;
 using GameStore.PL.Models;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GameStore.PL.Configurations
 {
-    public class AutoMapperConfig : Profile
+    public class AutoMapperConfigPL : Profile
     {
-        public AutoMapperConfig()
+        public AutoMapperConfigPL()
         {
-            CreateMap<CommentModel, CommentDto>().ReverseMap()
-                .ForMember(dst => dst.Game, map => map.MapFrom(src => src.Game.Name));
+            CreateMap<CommentDto, CommentModel>()
+                .ForMember(dst => dst.Game, map => map.MapFrom(src => src.Game.Name))
+                .ForMember(dst => dst.Parent, map => map.MapFrom(src => src.Parent.Name));
+
+            CreateMap<AddCommentModel, CommentDto>().ReverseMap();
         }
 
-        public static void Map(IServiceCollection services)
-        {
-            var mappingConfiguration = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfiles(new Profile[] { new AutoMapperConfig() });
-            });
-            IMapper mapper = mappingConfiguration.CreateMapper();
-            services.AddSingleton(mapper);
-        }
     }
 }

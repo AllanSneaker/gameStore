@@ -1,8 +1,6 @@
 ﻿using GameStore.DAL.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using GameStore.DAL.Entity.Models.Game;
 
 namespace GameStore.DAL.Entity.Context
@@ -58,17 +56,8 @@ namespace GameStore.DAL.Entity.Context
                 .HasForeignKey(x => x.PlatformTypeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            //Game relation with Comment
             modelBuilder.Entity<Game>()
-                .HasMany(g => g.Comments)
-                .WithOne(c => c.Game)
-                .HasForeignKey(g => g.GameId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Comment>()
-                .HasOne(c => c.Game)
-                .WithMany(g => g.Comments).HasForeignKey(c=>c.GameId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .HasMany(c => c.Comments);
 
 
             var plt1 = new PlatformType() { Id = 1, Type = "Windows" };
@@ -77,8 +66,8 @@ namespace GameStore.DAL.Entity.Context
             var g1 = new Genre() { Id = 1, Name = "Action" };
             var g2 = new Genre() { Id = 2, Name = "Sport" };
 
-            var comment = new Comment() { Id = 1, GameId = 1, Content = "comment", PublisherName = "nickname" };
-            var comment2 = new Comment() { Id = 2, /*GameId = 1,*/ Content = "comment2", PublisherName = "nickname" };
+            var comment = new Comment() { Id = 1, GameId = 1, Content = "comment", Publisher = "nickname", Created = DateTime.Today };
+            var comment2 = new Comment() { Id = 2, GameId = 1, Content = "comment2", Publisher = "nickname", Created = DateTime.Today };
 
             var game = new Game()
             {
@@ -87,8 +76,6 @@ namespace GameStore.DAL.Entity.Context
                 Views = 5,
                 Description = "Street racing with interesting plot",
                 Price = 123m
-                //Comments = new List<Comment>() { comment, comment2 }
-
             };
 
             var game2 = new Game()
@@ -98,8 +85,7 @@ namespace GameStore.DAL.Entity.Context
                 Views = 5,
                 Description = "Simulator of most popular sport at now day"
             };
-
-
+            
             modelBuilder.Entity<Comment>().HasData(comment, comment2);
             modelBuilder.Entity<Game>().HasData(game, game2);
 

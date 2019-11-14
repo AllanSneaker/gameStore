@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GameStore.DAL.Entity.Models;
 
 namespace GameStore.DAL.Entity.Interfaces
 {

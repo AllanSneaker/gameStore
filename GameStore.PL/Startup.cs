@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
-using Castle.Core.Logging;
+using AutoMapper;
 using GameStore.BLL.Configurations;
 using GameStore.BLL.Interfaces;
 using GameStore.BLL.Services;
 using GameStore.DAL.Entity.Context;
 using GameStore.DAL.Entity.Interfaces;
-using GameStore.DAL.Entity.Models;
 using GameStore.DAL.Entity.Repositories;
 using GameStore.PL.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,8 +30,13 @@ namespace GameStore.PL
             services.AddDbContext<GameStoreContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("GameStoreConnection")));
 
-            GameStore.BLL.Configurations.AutoMapperConfig.Map(services);
-            //GameStore.PL.Configurations.AutoMapperConfig.Map(services);
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfiles(new List<Profile>() { new AutoMapperConfig(), new AutoMapperConfigPL() });
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IGameService, GameService>();

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
 using GameStore.BLL.DTO;
 using GameStore.DAL.Entity.Models;
 using GameStore.DAL.Entity.Models.Game;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace GameStore.BLL.Configurations
 {
@@ -15,16 +11,6 @@ namespace GameStore.BLL.Configurations
         {
             CreateMap<Game, GameDto>().ReverseMap();
             CreateMap<Comment, CommentDto>().ReverseMap();
-        }
-
-        public static void Map(IServiceCollection services)
-        {
-            var mappingConfiguration = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfiles(new Profile[] { new AutoMapperConfig() });
-            });
-            IMapper mapper = mappingConfiguration.CreateMapper();
-            services.AddSingleton(mapper);
         }
     }
 }
