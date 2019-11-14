@@ -39,6 +39,19 @@ namespace GameStore.PL
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
+                {
+                    Version = "v1",
+                    Title = "API Documentation",
+                    TermsOfService = "None",
+                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact()
+                    {
+                        Name = "Roman"
+                    }
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -49,6 +62,12 @@ namespace GameStore.PL
             }
 
             app.ConfigureExceptionHandler();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Checkout Ad API");
+            });
+
             app.UseMvc();
         }
     }
