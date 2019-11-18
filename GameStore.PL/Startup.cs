@@ -65,7 +65,7 @@ namespace GameStore.PL
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Checkout Ad API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API");
             });
 
             app.UseMvc();
