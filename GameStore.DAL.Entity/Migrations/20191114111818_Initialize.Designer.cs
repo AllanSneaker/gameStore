@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameStore.DAL.Entity.Migrations
 {
     [DbContext(typeof(GameStoreContext))]
-    [Migration("20190930122335_Initialize")]
+    [Migration("20191114111818_Initialize")]
     partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,38 @@ namespace GameStore.DAL.Entity.Migrations
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("GameStore.DAL.Entity.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<int?>("GameId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("ParentId");
+
+                    b.Property<string>("Publisher");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Comments");
+
+                    b.HasData(
+                        new { Id = 1, Content = "comment", Created = new DateTime(2019, 11, 14, 0, 0, 0, 0, DateTimeKind.Local), GameId = 1, Publisher = "nickname" },
+                        new { Id = 2, Content = "comment2", Created = new DateTime(2019, 11, 14, 0, 0, 0, 0, DateTimeKind.Local), GameId = 1, Publisher = "nickname" }
+                    );
+                });
 
             modelBuilder.Entity("GameStore.DAL.Entity.Models.Game.Game", b =>
                 {
@@ -104,6 +136,17 @@ namespace GameStore.DAL.Entity.Migrations
                     b.HasIndex("PlatformTypeId");
 
                     b.ToTable("PlatformTypeGames");
+                });
+
+            modelBuilder.Entity("GameStore.DAL.Entity.Models.Comment", b =>
+                {
+                    b.HasOne("GameStore.DAL.Entity.Models.Game.Game", "Game")
+                        .WithMany("Comments")
+                        .HasForeignKey("GameId");
+
+                    b.HasOne("GameStore.DAL.Entity.Models.Comment", "Parent")
+                        .WithMany()
+                        .HasForeignKey("ParentId");
                 });
 
             modelBuilder.Entity("GameStore.DAL.Entity.Models.Game.Genre", b =>

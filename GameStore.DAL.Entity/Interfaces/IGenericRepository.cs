@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace GameStore.DAL.Entity.Interfaces
@@ -12,5 +12,6 @@ namespace GameStore.DAL.Entity.Interfaces
         TEntity Create(TEntity entity);
         TEntity Update(TEntity entity);
         void Delete(TEntity entity);
+        Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, Boolean>> predicate);
     }
 }

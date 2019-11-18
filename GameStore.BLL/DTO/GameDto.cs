@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace GameStore.BLL.DTO
 {
@@ -13,5 +12,11 @@ namespace GameStore.BLL.DTO
         public decimal Price { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime PublicationDate { get; set; }
+        public ICollection<CommentDto> Comments { get; set; }
+
+        public GameDto()
+        {
+            Comments = new List<CommentDto>();
+        }
     }
 }

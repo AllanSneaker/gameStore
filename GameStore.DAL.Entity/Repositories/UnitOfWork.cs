@@ -8,7 +8,8 @@ namespace GameStore.DAL.Entity.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private IGameRepository _gameRepository;
-        private readonly GameStoreContext _context;
+        private ICommentRepository _commentRepository;
+        private readonly GameStoreContext _context; 
 
         public UnitOfWork(GameStoreContext context)
         {
@@ -17,6 +18,9 @@ namespace GameStore.DAL.Entity.Repositories
         
         public IGameRepository GameRepository =>
             _gameRepository ?? (_gameRepository = new GameRepository(_context));
+
+        public ICommentRepository CommentRepository =>
+            _commentRepository ?? (_commentRepository = new CommentRepository(_context));
 
         public async Task SaveAsync()
         {

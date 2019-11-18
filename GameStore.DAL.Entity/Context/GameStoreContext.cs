@@ -1,8 +1,6 @@
 ﻿using GameStore.DAL.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using GameStore.DAL.Entity.Models.Game;
 
 namespace GameStore.DAL.Entity.Context
@@ -14,6 +12,7 @@ namespace GameStore.DAL.Entity.Context
         public DbSet<GenreGame> GenreGames { get; set; }
         public DbSet<PlatformType> PlatformTypes { get; set; }
         public DbSet<PlatformTypeGame> PlatformTypeGames { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         public GameStoreContext(DbContextOptions<GameStoreContext> options) : base(options)
         {
@@ -56,32 +55,38 @@ namespace GameStore.DAL.Entity.Context
                 .HasForeignKey(x => x.PlatformTypeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            
-            var plt1 = new PlatformType(){Id = 1, Type = "Windows"};
+            modelBuilder.Entity<Game>()
+                .HasMany(c => c.Comments);
+
+
+            var plt1 = new PlatformType() { Id = 1, Type = "Windows" };
             var plt2 = new PlatformType() { Id = 2, Type = "IOS" };
 
-            var g1 = new Genre(){Id = 1, Name = "Action" };
+            var g1 = new Genre() { Id = 1, Name = "Action" };
             var g2 = new Genre() { Id = 2, Name = "Sport" };
 
-            modelBuilder.Entity<Game>().HasData(
-                new Game()
-                {
-                    Id = 1,
-                    Name = "Need for Speed: Most Wanted",
-                    Views = 5,
-                    Description = "Street racing with interesting plot",
-                    Price = 123m
+            var comment = new Comment() { Id = 1, GameId = 1, Content = "comment", Publisher = "nickname", Created = DateTime.Today };
+            var comment2 = new Comment() { Id = 2, GameId = 1, Content = "comment2", Publisher = "nickname", Created = DateTime.Today };
 
-                },
-                new Game()
-                {
-                    Id = 2,
-                    Name = "Pro Evolution Soccer 2020",
-                    Views = 5,
-                    Description = "Simulator of most popular sport at now day",
+            var game = new Game()
+            {
+                Id = 1,
+                Name = "Need for Speed: Most Wanted",
+                Views = 5,
+                Description = "Street racing with interesting plot",
+                Price = 123m
+            };
 
-                }
-            );
+            var game2 = new Game()
+            {
+                Id = 2,
+                Name = "Pro Evolution Soccer 2020",
+                Views = 5,
+                Description = "Simulator of most popular sport at now day"
+            };
+            
+            modelBuilder.Entity<Comment>().HasData(comment, comment2);
+            modelBuilder.Entity<Game>().HasData(game, game2);
 
             base.OnModelCreating(modelBuilder);
         }
