@@ -19,7 +19,7 @@ namespace GameStore.BLL.Services
             _autoMapper = mapper;
             Database = unitOfWork;
         }
-        public async Task AddComment(int gameId, CommentDto entity)
+        public async Task AddCommentAsync(int gameId, CommentDto entity)
         {
             if (entity == null)
                 throw new ArgumentNullException();
@@ -33,7 +33,7 @@ namespace GameStore.BLL.Services
             await Database.SaveAsync();
         }
 
-        public async Task<IEnumerable<CommentDto>> GetAllComments(int gameId)
+        public async Task<IEnumerable<CommentDto>> GetAllCommentsAsync(int gameId)
         {
             var game = await Database.GameRepository.GetAsync(gameId);
             if (game == null)

@@ -23,7 +23,7 @@ namespace GameStore.PL.Controller
         [Route("api/games/{gameId}/comments")]
         public async Task<IEnumerable<CommentModel>> GetComments(int gameId)
         {
-            var comments = _autoMapper.Map<IEnumerable <CommentModel>>(await _commentService.GetAllComments(gameId));
+            var comments = _autoMapper.Map<IEnumerable <CommentModel>>(await _commentService.GetAllCommentsAsync(gameId));
             return comments;
         }
 
@@ -32,7 +32,7 @@ namespace GameStore.PL.Controller
         public async Task<IActionResult> AddComment(int gameId, [FromBody]AddCommentModel model)
         {
             var comment = _autoMapper.Map<AddCommentModel, CommentDto>(model);
-            await _commentService.AddComment(gameId, comment);
+            await _commentService.AddCommentAsync(gameId, comment);
             return Ok("Comment added");
         }
     }

@@ -6,7 +6,7 @@ namespace GameStore.BLL.Interfaces
 {
     public interface ICommentService
     {
-        Task<IEnumerable<CommentDto>> GetAllComments(int gameId);
-        Task AddComment(int gameId, CommentDto entity);
+        Task<IEnumerable<CommentDto>> GetAllCommentsAsync(int gameId);
+        Task AddCommentAsync(int gameId, CommentDto entity);
     }
 }
